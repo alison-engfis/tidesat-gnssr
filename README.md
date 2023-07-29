@@ -1,16 +1,13 @@
-### Hi there 👋
+### Hello there 👋
 
-<!--
-**alison-engfis/alison-engfis** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Check out my current task status:
 
-Here are some ideas to get you started:
+- 🔭 Working at CTA - UFRGS in the Cosmic Pampa project, as Bash Automation developer;
+- 🌱 Currently learning more of:
+ 
+     - Commands to execute in a Container Docker;
+     - Python for DS and DE;
+     - Assembly for an Academic project.
+     
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+In the meantime, I´m a Physics and Math teacher (an excelent teacher).
