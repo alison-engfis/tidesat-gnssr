@@ -1,6 +1,6 @@
 ### Hello there 👋
 
-Check out my current task status:
+Check out my current tasks status:
 
 - 🔭 Working at CTA - UFRGS in the Cosmic Pampa project, as Bash Automation developer;
 - 🌱 Currently learning more of:
