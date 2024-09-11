@@ -2,7 +2,7 @@
 
 Check out my current tasks status:
 
-- 🔭 Working at CTA - UFRGS in the Cosmic Pampa project, as Bash Automation developer;
+- 🔭 Working at TideSat Global- UFRGS.
 - 🌱 Currently learning more of:
  
      - Commands to execute in a Container Docker;
