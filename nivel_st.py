@@ -19,7 +19,7 @@ def load_data():
         dados_nivel = StringIO(response.text)
         df = pd.read_csv(dados_nivel, sep= ',')
         
-        df.rename(columns={'% year': 'year', ' month': 'month', ' day': 'day', ' hour': 'hour', 
+        df.rename(columns= {'% year': 'year', ' month': 'month', ' day': 'day', ' hour': 'hour', 
                            ' minute': 'minute', ' second (GMT/UTC)': 'second',
                            ' water level (meters)': 'water_level(m)'}, inplace= True)
 
@@ -50,7 +50,7 @@ if dados is not None:
     ax.set_xlabel('Data')
     ax.set_ylabel('Nível (m)')
     ax.set_title('Nível do Guaíba ao Longo do Tempo')
-    plt.xticks(rotation=45)
+    plt.xticks(rotation= 45)
     plt.grid(True)
 
     # Gráfico no app Streamlit
