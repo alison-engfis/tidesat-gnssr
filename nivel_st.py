@@ -8,7 +8,7 @@ from io import StringIO
 url = "https://app.tidesatglobal.com/sph4/sph4_out.csv"
 
 # Função para carregar os dados do link externo
-@st.cache_data(ttl= 600)  # Cache por t = 10 min
+@st.cache_data # (ttl= 600)  # Cache por t = 10 min
 def load_data():
     
     # Teste de request
