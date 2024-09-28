@@ -57,6 +57,3 @@ if dados is not None:
     st.pyplot(fig)
 else:
     st.write("Falha ao carregar os dados.")
-
-# Gráfico no Streamlit app
-st.pyplot(fig)
