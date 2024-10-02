@@ -42,8 +42,8 @@ dados = load_data()
 if dados is not None:
 
     # Tabela de dados
-    st.write("Dados de Nível:")
-    st.dataframe(dados[['datetime', 'water_level(m)']])
+    # st.write("Dados de Nível:")
+    # st.dataframe(dados[['datetime', 'water_level(m)']])
 
     # Plot
     st.write("Gráfico do Nível da Água ao Longo do Tempo:")
