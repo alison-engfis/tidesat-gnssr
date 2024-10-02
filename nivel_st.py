@@ -41,7 +41,7 @@ dados = load_data()
 if dados is not None:
     
     # Plot interativo
-    fig = px.line(dados_filtrados, x= 'datetime', y= 'water_level(m)', title= 'Dados da estação (SPH4) - Guaíba')
+    fig = px.line(dados, x= 'datetime', y= 'water_level(m)', title= 'Nível do Guaíba ao Longo do Tempo')
     fig.update_xaxes(title_text= 'Data')
     fig.update_yaxes(title_text= 'Nível (m)')
 
