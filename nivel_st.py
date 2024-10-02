@@ -32,7 +32,7 @@ def load_data():
 st.image("TideSat_logo.webp", width= 200)
 
 # Título
-st.markdown("<h1 style= 'text-align: center; font-size: 30px;'>Monitore o nível da água onde quiser,acesse de onde estiver!</h1>", unsafe_allow_html= True)
+st.markdown("<h1 style= 'text-align: center; font-size: 30px;'>Monitore o nível da água onde quiser, acesse de onde estiver!</h1>", unsafe_allow_html= True)
 
 # Carregar os dados
 dados = load_data()
