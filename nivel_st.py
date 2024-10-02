@@ -53,6 +53,6 @@ if dados is not None:
         font= {'size': 18})
 
     # Gráfico interativo no Streamlit app
-    st.plotly_chart(fig, use_container_width= True)
+    st.plotly_chart(fig)
 else:
     st.write("Falha ao carregar os dados.")
