@@ -29,7 +29,7 @@ def load_data():
         return None
 
 # Logo TideSat
-st.image("logo_empresa.png", width= 200)
+st.image("TideSat_logo.webp", width= 200)
 
 # Título
 st.markdown("<h1 style= 'text-align: center; font-size: 30px;'>Monitore o nível da água onde quiser,acesse de onde estiver!</h1>", unsafe_allow_html= True)
