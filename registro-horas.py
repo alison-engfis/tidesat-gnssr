@@ -32,8 +32,54 @@ def carregar_dados():
 def salvar_dados(dados):
     dados.to_csv(ARQUIVO_DADOS, index=False)  
 
+# Função para calcular resumos estatísticos
+def calcular_resumos(dados):
+
+    # Remove as linhas com dados inválidos
+    dados = dados.dropna(subset=["Data"])
+    
+    if dados.empty:
+        return {
+            "total_mes": 0,
+            "total_semana": 0,
+            "media_diaria": 0,
+            "media_semanal": 0,
+            "media_mensal": 0
+        }
+
+    dados["Data"] = pd.to_datetime(dados["Data"])
+
+    mes_atual = dados["Data"].dt.to_period("M").max()
+    semana_atual = dados["Data"].dt.to_period("W").max()
+
+    total_mes = dados[dados["Data"].dt.to_period("M") == mes_atual]["Horas Totais"].sum()
+    total_semana = dados[dados["Data"].dt.to_period("W") == semana_atual]["Horas Totais"].sum()
+
+    media_diaria = dados.groupby("Data")["Horas Totais"].sum().mean()
+    media_semanal = dados.groupby(dados["Data"].dt.to_period("W"))["Horas Totais"].sum().mean()
+    media_mensal = dados.groupby(dados["Data"].dt.to_period("M"))["Horas Totais"].sum().mean()
+
+    return {
+        "total_mes": total_mes,
+        "total_semana": total_semana,
+        "media_diaria": media_diaria,
+        "media_semanal": media_semanal,
+        "media_mensal": media_mensal
+    }      
+
 # Carrega os dados existentes
 dados = carregar_dados()
+resumos = calcular_resumos(dados)
+
+
+
+# Exibição breve de alguns resumos estatísticos na barra lateral
+st.sidebar.markdown("## Resumo Atual")
+st.sidebar.metric("Horas no Mês Atual", f"{resumos['total_mes']:.2f} h")
+st.sidebar.metric("Horas na Semana Atual", f"{resumos['total_semana']:.2f} h")
+st.sidebar.metric("Média de Horas Diárias", f"{resumos['media_diaria']:.2f} h")
+st.sidebar.metric("Média de Horas Semanais", f"{resumos['media_semanal']:.2f} h")
+st.sidebar.metric("Média de Horas Mensais", f"{resumos['media_mensal']:.2f} h")
 
 st.title("Registro de Horas Totais")
 
