@@ -108,9 +108,18 @@ def calcular_resumos(dados):
 dados = carregar_dados()
 resumos = calcular_resumos(dados)
 
-# Aba lateral de navegação
-menu = st.sidebar.selectbox("Menu", ["Registrar Horas", "Visualizar Dados", "Análises Gráficas"])
+# Variável de ambiente que identifica quem é o criador
+MEU_EMAIL = "alison.engfis@gmail.com"
 
+# Obter o e-mail do ambiente ou configuração do Streamlit
+usuario_atual = os.getenv("USER_EMAIL")  # Ou configurar manualmente a variável
+
+# Verificar se o usuário atual é o criador
+if usuario_atual == MEU_EMAIL:
+    menu = st.sidebar.selectbox("Menu", ["Registrar Horas", "Visualizar Dados", "Análises Gráficas"])
+else:
+    menu = st.sidebar.selectbox("Menu", ["Visualizar Dados", "Análises Gráficas"])
+    
 # Exibição breve de alguns resumos estatísticos na barra lateral
 st.sidebar.markdown("## Resumo Atual")
 st.sidebar.metric("Horas no Mês Atual", f"{resumos['total_mes']:.2f} h")
