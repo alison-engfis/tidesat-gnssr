@@ -33,9 +33,8 @@ def carregar_dados(arquivo_csv):
 
 # Função para salvar os dados
 def salvar_dados(dados):
-    dados.to_csv(ARQUIVO_DADOS, index=False)
 
-    return dados 
+    dados.to_csv(ARQUIVO_DADOS, index=False)
 
 # Função para calcular resumos estatísticos
 def calcular_resumos(dados):
@@ -96,6 +95,7 @@ with st.form("register_form"):
     registrar = st.form_submit_button("Registrar")
     
     if registrar:
+
         if atividade and horas > 0:
 
             nova_entrada = pd.DataFrame({
