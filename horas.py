@@ -118,8 +118,8 @@ usuario_atual = os.getenv("USER_EMAIL")  # Ou configurar manualmente a variável
 if usuario_atual == MEU_EMAIL:
     menu = st.sidebar.selectbox("Menu", ["Registrar Horas", "Visualizar Dados", "Análises Gráficas"])
 else:
-    menu = st.sidebar.selectbox("Menu", ["Visualizar Dados", "Análises Gráficas"])
-    
+    menu = st.sidebar.selectbox("Menu", ["Análises Gráficas", "Visualizar Dados"])
+
 # Exibição breve de alguns resumos estatísticos na barra lateral
 st.sidebar.markdown("## Resumo Atual")
 st.sidebar.metric("Horas no Mês Atual", f"{resumos['total_mes']:.2f} h")
