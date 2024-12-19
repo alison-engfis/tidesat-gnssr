@@ -4,7 +4,7 @@ import os
 import plotly.express as px
 
 # Configuração da página
-st.set_page_config(page_title="Registro de Horas", layout="centered", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Registro de Horas", layout="centered", initial_sidebar_state="collapsed", menu_items=None)
 
 # Reduz a margem superior da página
 st.markdown(
@@ -15,23 +15,9 @@ st.markdown(
         }
     </style>
     """,
-    unsafe_allow_html=True
-)
+    unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Ocultando menu e rodapé (via CSS)
+''' Ocultando menu e rodapé (via CSS)
 esconder = """
         <style>
         #MainMenu {visibility: hidden;}
@@ -39,7 +25,7 @@ esconder = """
         .stActionButton {display: none;}
         </style>
         """
-st.markdown(esconder, unsafe_allow_html=True)
+st.markdown(esconder, unsafe_allow_html=True)'''
 
 # Arquivo de dados
 DATA_FILE = "registro_horas.csv"
