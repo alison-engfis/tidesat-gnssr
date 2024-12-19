@@ -4,18 +4,29 @@ import os
 import plotly.express as px
 
 # Configuração da página
-st.set_page_config(
-    page_title="Registro de Horas", 
-    layout="centered", 
-    initial_sidebar_state="collapsed",
-    menu_items={
-        'Get Help': None,  # Remove o item de ajuda
-        'About': None,     # Remove o item "Sobre"
-        'Report a bug': None,  # Remove a opção "Reportar um bug"
-        'Streamlit Cloud': None  # Remove o ícone do GitHub/Streamlit Cloud
-    }
+st.set_page_config(page_title="Registro de Horas", layout="centered", initial_sidebar_state="collapsed")
+
+# Reduz a margem superior da página
+st.markdown(
+    """
+    <style>
+        .main {
+            margin-top: -69px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
 )
 
+# Ocultando menu e rodapé (via CSS)
+esconder = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        .stActionButton {display: none;}
+        </style>
+        """
+st.markdown(esconder, unsafe_allow_html=True)
 
 # Arquivo de dados
 DATA_FILE = "registro_horas.csv"
