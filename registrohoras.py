@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # Arquivo de dados
-ARQUIVO_DADOS = "registro_horas.csv"
+ARQUIVO_DADOS = "alison-engfis/registro_horas.csv"
 
 atividades_recentes = [
     "Configurações e funções genéricas",
