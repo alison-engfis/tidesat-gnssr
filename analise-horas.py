@@ -69,8 +69,6 @@ st.sidebar.metric("Média de Horas Diárias", f"{resumos['media_diaria']:.2f} h"
 st.sidebar.metric("Média de Horas Semanais", f"{resumos['media_semanal']:.2f} h")
 st.sidebar.metric("Média de Horas Mensais", f"{resumos['media_mensal']:.2f} h")
 
-st.title("Análises Gráficas e Visualização de Dados")
-
 if not dados.empty:
 
     if menu == "Análises Gráficas":
