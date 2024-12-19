@@ -80,7 +80,7 @@ def monitorar_csv():
 
 
 # Carrega os dados existentes
-dados = carregar_dados()
+dados = carregar_dados(arquivo_dados)
 
 resumos = calcular_resumos(dados)
 
