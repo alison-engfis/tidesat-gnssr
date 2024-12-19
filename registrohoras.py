@@ -17,10 +17,13 @@ atividades_recentes = [
 ]
 
 # Função para carregar os dados
-def carregar_dados():
-    if os.path.exists(ARQUIVO_DADOS) and os.path.getsize(ARQUIVO_DADOS) > 0:
+def carregar_dados(arquivo_csv):
 
-        dados = pd.read_csv(ARQUIVO_DADOS, parse_dates=["Data"])
+    csv = arquivo_csv
+
+    if os.path.exists(csv) and os.path.getsize(csv) > 0:
+
+        dados = pd.read_csv(csv, parse_dates=["Data"])
         dados = dados.dropna(subset=["Data"])
         dados["Data"] = pd.to_datetime(dados["Data"], format="%Y-%m-%d", errors="coerce")
 
@@ -70,7 +73,7 @@ def calcular_resumos(dados):
     }      
 
 # Carrega os dados existentes
-dados = carregar_dados()
+dados = carregar_dados(ARQUIVO_DADOS)
 resumos = calcular_resumos(dados)
 
 # Exibição breve de alguns resumos estatísticos na barra lateral
