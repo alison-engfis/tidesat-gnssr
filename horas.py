@@ -41,16 +41,6 @@ atividades_recentes = [
     "Zoom restrito",
 ]
 
-# Função para obter o IP público usando uma API externa
-def obter_ip():
-    try:
-        # Requisição para a API ipify que retorna o IP público
-        ip_publico = requests.get('https://api.ipify.org').text
-        return ip_publico
-    except requests.exceptions.RequestException as e:
-        # Se houver algum erro, retorna None
-        return None
-
 # Função para carregar os dados
 def carregar_dados():
 
@@ -119,15 +109,8 @@ def calcular_resumos(dados):
 dados = carregar_dados()
 resumos = calcular_resumos(dados)
 
-# Definir o IP do criador
-MEU_IP = "2804:d51:a430:5d00:b8a6:ed4a:995f:df3d"
 
-# Verificar se o IP público da máquina é o mesmo que o especificado
-if obter_ip() == MEU_IP:
-    menu = st.sidebar.selectbox("Menu", ["Registrar Horas", "Visualizar Dados", "Análises Gráficas"])
-
-else:
-    menu = st.sidebar.selectbox("Menu", ["Análises Gráficas", "Visualizar Dados"])
+menu = st.sidebar.selectbox("Menu", ["Registrar Horas", "Visualizar Dados", "Análises Gráficas"])
 
 # Exibição breve de alguns resumos estatísticos na barra lateral
 st.sidebar.markdown("## Resumo Atual")
