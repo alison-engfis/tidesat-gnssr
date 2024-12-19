@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 import plotly.express as px
+import requests
 
 # Configuração da página
 st.set_page_config(
@@ -39,6 +40,16 @@ atividades_recentes = [
     "TideSat-Estrela",
     "Zoom restrito",
 ]
+
+# Função para obter o IP público usando uma API externa
+def obter_ip():
+    try:
+        # Requisição para a API ipify que retorna o IP público
+        ip_publico = requests.get('https://api.ipify.org').text
+        return ip_publico
+    except requests.exceptions.RequestException as e:
+        # Se houver algum erro, retorna None
+        return None
 
 # Função para carregar os dados
 def carregar_dados():
@@ -109,15 +120,12 @@ dados = carregar_dados()
 resumos = calcular_resumos(dados)
 
 # Definir o IP do criador
-MEU_IP = "192.168.1.12"  # Seu IP local
+MEU_IP = "192.168.1.12"
 
-# Função para obter o IP local do usuário
-def obter_ip():
-    return socket.gethostbyname(socket.gethostname())
-
-# Verificar se o IP corresponde ao do criador
+# Verificar se o IP público da máquina é o mesmo que o especificado
 if obter_ip() == MEU_IP:
     menu = st.sidebar.selectbox("Menu", ["Registrar Horas", "Visualizar Dados", "Análises Gráficas"])
+
 else:
     menu = st.sidebar.selectbox("Menu", ["Análises Gráficas", "Visualizar Dados"])
 
