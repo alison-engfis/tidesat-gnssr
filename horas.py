@@ -120,7 +120,7 @@ dados = carregar_dados()
 resumos = calcular_resumos(dados)
 
 # Definir o IP do criador
-MEU_IP = "192.168.1.12"
+MEU_IP = "2804:d51:a430:5d00:b8a6:ed4a:995f:df3d"
 
 # Verificar se o IP público da máquina é o mesmo que o especificado
 if obter_ip() == MEU_IP:
