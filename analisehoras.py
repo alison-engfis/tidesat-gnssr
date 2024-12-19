@@ -2,15 +2,20 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
+import time
 
 from registrohoras import ARQUIVO_DADOS
 
-# Função para carregar os dados
-def carregar_dados():
-    
-    if os.path.exists(ARQUIVO_DADOS) and os.path.getsize(ARQUIVO_DADOS) > 0:
+arquivo_dados = ARQUIVO_DADOS
 
-        dados = pd.read_csv(ARQUIVO_DADOS, parse_dates=["Data"])
+# Função para carregar os dados
+def carregar_dados(csv_dados):
+
+    dados = csv_dados
+    
+    if os.path.exists(dados) and os.path.getsize(dados) > 0:
+
+        dados = pd.read_csv(dados, parse_dates=["Data"])
         dados = dados.dropna(subset=["Data"])
         dados["Data"] = pd.to_datetime(dados["Data"], format="%Y-%m-%d", errors="coerce")
 
@@ -56,21 +61,31 @@ def calcular_resumos(dados):
 
 # Monitoramento do arquivo CSV
 if "ultima_modificacao" not in st.session_state:
-    st.session_state["ultima_modificacao"] = os.path.getmtime(ARQUIVO_DADOS) if os.path.exists(ARQUIVO_DADOS) else 0
+    st.session_state["ultima_modificacao"] = os.path.getmtime(arquivo_dados) if os.path.exists(arquivo_dados) else 0
 
+# Monitoramento do arquivo CSV
 def monitorar_csv():
+    tempo_atual = time.time()  # Tempo atual em segundos
 
-    if os.path.exists(ARQUIVO_DADOS):
+    # Verifica se já passaram 30 segundos desde a última verificação
+    if "ultimo_check" not in st.session_state or tempo_atual - st.session_state["ultimo_check"] > 30:
+        st.session_state["ultimo_check"] = tempo_atual  # Atualiza o timestamp da última verificação
+        
+        if os.path.exists(arquivo_dados):
+            ultima_modificacao = os.path.getmtime(arquivo_dados)  
+            # Timestamp da última modificação do arquivo
+            if ultima_modificacao != st.session_state["ultima_modificacao"]:
+                st.session_state["ultima_modificacao"] = ultima_modificacao
+                st.rerun()  # Recarrega a página quando o arquivo for alterado
 
-        ultima_modificacao = os.path.getmtime(ARQUIVO_DADOS)
-        if ultima_modificacao != st.session_state["ultima_modificacao"]:
-            st.session_state["lultima_modificacao"] = ultima_modificacao
-            st.rerun()   
 
 # Carrega os dados existentes
 dados = carregar_dados()
 
 resumos = calcular_resumos(dados)
+
+# Verifica alterações no arquivo CSV a cada execução
+monitorar_csv()
 
 menu = st.sidebar.selectbox("Menu", ["Análises Gráficas", "Visualizar Dados", ])
 
@@ -128,7 +143,5 @@ if not dados.empty:
             )
         else:
             st.info("Nenhum dado registrado ainda.")
-# Verifica alterações no arquivo CSV a cada execução
-monitorar_csv()
 
 st.sidebar.info("App beta desenvolvido para registrar e monitorar as horas totais dedicadas ao projeto 'TideSat - Streamlit'.")

@@ -93,7 +93,6 @@ with st.form("register_form"):
     registrar = st.form_submit_button("Registrar")
     
     if registrar:
-        
         if atividade and horas > 0:
 
             nova_entrada = pd.DataFrame({
