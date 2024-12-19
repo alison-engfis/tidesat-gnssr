@@ -108,14 +108,15 @@ def calcular_resumos(dados):
 dados = carregar_dados()
 resumos = calcular_resumos(dados)
 
-# Variável de ambiente que identifica quem é o criador
-MEU_EMAIL = "alison.engfis@gmail.com"
+# Definir o IP do criador
+MEU_IP = "192.168.1.12"  # Seu IP local
 
-# Obter o e-mail do ambiente ou configuração do Streamlit
-usuario_atual = os.getenv("USER_EMAIL")  # Ou configurar manualmente a variável
+# Função para obter o IP local do usuário
+def obter_ip():
+    return socket.gethostbyname(socket.gethostname())
 
-# Verificar se o usuário atual é o criador
-if usuario_atual == MEU_EMAIL:
+# Verificar se o IP corresponde ao do criador
+if obter_ip() == MEU_IP:
     menu = st.sidebar.selectbox("Menu", ["Registrar Horas", "Visualizar Dados", "Análises Gráficas"])
 else:
     menu = st.sidebar.selectbox("Menu", ["Análises Gráficas", "Visualizar Dados"])
