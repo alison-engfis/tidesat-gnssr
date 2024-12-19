@@ -59,30 +59,63 @@ dados = carregar_dados()
 
 resumos = calcular_resumos(dados)
 
+menu = st.sidebar.selectbox("Menu", ["Análises Gráficas", "Visualizar Dados", ])
+
+# Exibição breve de alguns resumos estatísticos na barra lateral
+st.sidebar.markdown("## Resumo Atual")
+st.sidebar.metric("Horas no Mês Atual", f"{resumos['total_mes']:.2f} h")
+st.sidebar.metric("Horas na Semana Atual", f"{resumos['total_semana']:.2f} h")
+st.sidebar.metric("Média de Horas Diárias", f"{resumos['media_diaria']:.2f} h")
+st.sidebar.metric("Média de Horas Semanais", f"{resumos['media_semanal']:.2f} h")
+st.sidebar.metric("Média de Horas Mensais", f"{resumos['media_mensal']:.2f} h")
+
 st.title("Análises Gráficas e Visualização de Dados")
 
 if not dados.empty:
 
-    # Gráfico de Horas por Dia
-    dados_diarios = dados.groupby(dados["Data"].dt.date)["Horas Totais"].sum().reset_index()
-    fig = px.bar(dados_diarios, x='Data', y='Horas Totais', labels={'Data': 'Data', 'Horas Totais': 'Horas'})
-    fig.update_layout(title="Horas por Dia", xaxis_title="Data", yaxis_title="Horas")
+    if menu == "Análises Gráficas":
 
-    st.plotly_chart(fig)
+        st.header("Análises Gráficas")
 
-    # Gráfico de Horas por Tipo de Atividade
-    horas_por_atividade = dados.groupby("Atividade")["Horas Totais"].sum().reset_index()
-    fig = px.bar(horas_por_atividade, x='Atividade', y='Horas Totais', labels={'Atividade': 'Tipo de Atividade', 'Horas Totais': 'Horas'})
-    fig.update_layout(title="Horas por Tipo de Atividade", xaxis_title="Atividade", yaxis_title="Horas")
+        st.markdown("<br>", unsafe_allow_html=True)
 
-    st.plotly_chart(fig)
+        dados_diarios = dados.groupby(dados["Data"].dt.date)["Horas Totais"].sum().reset_index()
 
-    # Gráfico Contínuo de Linha
-    fig = px.line(dados_diarios, x='Data', y='Horas Totais', labels={'Data': 'Data', 'Horas Totais': 'Horas'})
-    fig.update_layout(title="Horas Acumuladas por Data", xaxis_title="Data", yaxis_title="Horas")
+        fig = px.bar(dados_diarios, x='Data', y='Horas Totais', labels={'Data': 'Data', 'Horas Totais': 'Horas'})
+        fig.update_layout(title="Horas por Dia", xaxis_title="Data", yaxis_title="Horas")
+        st.plotly_chart(fig)
 
-    st.plotly_chart(fig)
-else:
-    st.info("Nenhum dado registrado ainda.")
+        st.markdown("<br>", unsafe_allow_html=True)
 
-st.sidebar.info("App beta desenvolvido para registrar e monitorar as horas totais dedicadas ao projeto 'TideSat - Streamlit'.")    
+        # Gráfico de Horas por Tipo de Atividade
+        horas_por_atividade = dados.groupby("Atividade")["Horas Totais"].sum().reset_index()
+
+        fig = px.bar(horas_por_atividade, x='Atividade', y='Horas Totais', labels={'Atividade': 'Tipo de Atividade', 'Horas Totais': 'Horas'})
+        fig.update_layout(title="Horas por Tipo de Atividade", xaxis_title="Atividade", yaxis_title="Horas")
+        st.plotly_chart(fig)
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        # Gráfico Contínuo de Linha
+        fig = px.line(dados_diarios, x='Data', y='Horas Totais', labels={'Data': 'Data', 'Horas Totais': 'Horas'})
+        fig.update_layout(title="Horas Acumuladas por Data", xaxis_title="Data", yaxis_title="Horas")
+        st.plotly_chart(fig)
+
+    elif menu == "Visualizar Dados":
+        st.header("Dados")
+
+        if not dados.empty:
+            st.dataframe(dados)
+            
+            # Botão para download do CSV
+            csv = dados.to_csv(index=False).encode('utf-8')
+            st.download_button(
+                label="Baixar dados como CSV",
+                data=csv,
+                file_name="horas_totais.csv",
+                mime="text/csv",
+            )
+        else:
+            st.info("Nenhum dado registrado ainda.")
+
+st.sidebar.info("App beta desenvolvido para registrar e monitorar as horas totais dedicadas ao projeto 'TideSat - Streamlit'.")
