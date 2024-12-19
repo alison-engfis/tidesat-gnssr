@@ -9,10 +9,9 @@ st.set_page_config(
     layout="centered", 
     initial_sidebar_state="collapsed",
     menu_items={
-        'Get Help': None,  # Remove o item de ajuda
-        'About': None,     # Remove o item "Sobre"
-        'Report a bug': None,  # Remove a opção "Reportar um bug"
-        'Streamlit Cloud': None  # Remove o ícone do GitHub/Streamlit Cloud
+        'Get help': None,  # Remove o item de ajuda
+        'Report a Bug': None,  # Remove a opção "Reportar um bug"
+        'About': None  # Remove a opção "Sobre"
     }
 )
 
