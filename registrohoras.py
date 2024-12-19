@@ -30,7 +30,9 @@ def carregar_dados():
 
 # Função para salvar os dados
 def salvar_dados(dados):
-    dados.to_csv(ARQUIVO_DADOS, index=False)  
+    dados.to_csv(ARQUIVO_DADOS, index=False)
+
+    return dados 
 
 # Função para calcular resumos estatísticos
 def calcular_resumos(dados):
@@ -102,6 +104,7 @@ with st.form("register_form"):
             })
             dados = pd.concat([dados, nova_entrada], ignore_index=True)
             salvar_dados(dados)
+            st.rerun()
 
             st.success("Registro salvo com sucesso!")
         else:

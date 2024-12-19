@@ -3,8 +3,10 @@ import pandas as pd
 import plotly.express as px
 import os
 
+from registrohoras import salvar_dados
+
 # Arquivo de dados
-ARQUIVO_DADOS= "registro_horas.csv"
+ARQUIVO_DADOS= salvar_dados()
 
 # Função para carregar os dados
 def carregar_dados():
