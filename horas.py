@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import plotly.express as px
 
-## Configuração da página
+# Configuração da página
 st.set_page_config(
     page_title="Registro de Horas", 
     layout="centered", 
