@@ -3,13 +3,11 @@ import pandas as pd
 import plotly.express as px
 import os
 
-from registrohoras import salvar_dados
-
-# Arquivo de dados
-ARQUIVO_DADOS= salvar_dados()
+from registrohoras import ARQUIVO_DADOS
 
 # Função para carregar os dados
 def carregar_dados():
+    
     if os.path.exists(ARQUIVO_DADOS) and os.path.getsize(ARQUIVO_DADOS) > 0:
 
         dados = pd.read_csv(ARQUIVO_DADOS, parse_dates=["Data"])

@@ -73,8 +73,6 @@ def calcular_resumos(dados):
 dados = carregar_dados()
 resumos = calcular_resumos(dados)
 
-
-
 # Exibição breve de alguns resumos estatísticos na barra lateral
 st.sidebar.markdown("## Resumo Atual")
 st.sidebar.metric("Horas no Mês Atual", f"{resumos['total_mes']:.2f} h")
@@ -95,6 +93,7 @@ with st.form("register_form"):
     registrar = st.form_submit_button("Registrar")
     
     if registrar:
+        
         if atividade and horas > 0:
 
             nova_entrada = pd.DataFrame({
