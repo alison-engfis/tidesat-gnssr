@@ -17,7 +17,7 @@ def carregar_dados():
         return dados
     
     else:
-        return pd.DataFrame(columns=["Data", "Atividade", "Horas Totais"])
+        return pd.DataFrame(columns=["Data", "Atividade", "Horas Totais"]) 
     
 # Função para calcular resumos estatísticos
 def calcular_resumos(dados):
@@ -52,7 +52,20 @@ def calcular_resumos(dados):
         "media_diaria": media_diaria,
         "media_semanal": media_semanal,
         "media_mensal": media_mensal
-    }      
+    }   
+
+# Monitoramento do arquivo CSV
+if "ultima_modificacao" not in st.session_state:
+    st.session_state["ultima_modificacao"] = os.path.getmtime(ARQUIVO_DADOS) if os.path.exists(ARQUIVO_DADOS) else 0
+
+def monitorar_csv():
+
+    if os.path.exists(ARQUIVO_DADOS):
+
+        ultima_modificacao = os.path.getmtime(ARQUIVO_DADOS)
+        if ultima_modificacao != st.session_state["ultima_modificacao"]:
+            st.session_state["lultima_modificacao"] = ultima_modificacao
+            st.rerun()   
 
 # Carrega os dados existentes
 dados = carregar_dados()
@@ -115,5 +128,7 @@ if not dados.empty:
             )
         else:
             st.info("Nenhum dado registrado ainda.")
+# Verifica alterações no arquivo CSV a cada execução
+monitorar_csv()
 
 st.sidebar.info("App beta desenvolvido para registrar e monitorar as horas totais dedicadas ao projeto 'TideSat - Streamlit'.")
