@@ -1,22 +1,24 @@
-Data,Atividade,Horas Totais
-2024-12-02,Configurações e funções genéricas,4.5
-2024-12-03,Configurações e funções genéricas,4.5
-2024-12-03,Modo claro/escuro,4.5
-2024-12-04,Modo claro/escuro,7.0
-2024-12-05,Prévia para compartilhamento,2.5
-2024-12-05,TideSat-Estrela,2.5
-2024-12-05,Zoom restrito,3.0
-2024-12-09,Segregar exibição,5.0
-2024-12-09,Configurações e funções genéricas,3.0
-2024-12-10,Segregar exibição,3.0
-2024-12-11,Segregar exibição,5.5
-2024-12-12,Cotas notáveis,2.0
-2024-12-12,Fotos e mapa,2.5
-2024-12-14,Configurações e funções genéricas,4.0
-2024-12-14,Fotos e mapa,2.0
-2024-12-14,Cotas notáveis,2.5
-2024-12-15,Configurações e funções genéricas,3.0
-2024-12-16,Configurações e funções genéricas,4.5
-2024-12-17,Configurações e funções genéricas,3.5
-2024-12-17,Fotos e mapa,5.0
-2024-12-18,Configurações e funções genéricas,4.0
+Data,Horário Inicial,Horário Final,Duração (h),Atividade
+02-12-2024,12:30,14:00,1.5,TideSat-Estrela
+02-12-2024,21:00,23:45,2.75,TideSat-Estrela
+03-12-2024,08:30,14:30,6.0,Configurações e funções genéricas
+03-12-2024,21:00,23:45,2.75,Segregar exibição
+04-12-2024,10:30,17:30,7.0,Segregar exibição
+05-12-2024,09:30,14:30,5.0,Fotos e mapa
+05-12-2024,21:30,23:45,2.25,Fotos e mapa
+09-12-2024,12:00,17:00,5.0,Modo claro/escuro
+09-12-2024,20:00,23:00,3.0,Modo claro/escuro
+10-12-2024,13:15,16:30,3.25,Prévia para compartilhamento
+11-12-2024,12:00,17:30,5.5,Cotas notáveis
+12-12-2024,13:30,15:30,2.0,Cotas notáveis
+12-12-2024,20:00,22:30,2.5,Cotas notáveis
+14-12-2024,13:00,17:00,4.0,Configurações e funções genéricas
+14-12-2024,20:00,23:45,3.75,Configurações e funções genéricas
+15-12-2024,00:00,01:30,1.5,Configurações e funções genéricas
+15-12-2024,15:00,18:00,3.0,Cotas notáveis
+16-12-2024,22:00,23:45,1.75,Cotas notáveis
+17-12-2024,00:00,02:45,2.75,Cotas notáveis
+17-12-2024,13:30,17:00,3.5,Configurações e funções genéricas
+18-12-2024,12:30,17:30,5.0,Fotos e mapa
+19-12-2024,20:30,23:45,3.25,Fotos e mapa
+20-12-2024,20:00,23:45,3.75,Fotos e mapa
