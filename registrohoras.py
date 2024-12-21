@@ -30,12 +30,12 @@ def carregar_dados(arquivo_csv):
 
         return dados
     else:
-        return pd.DataFrame(columns=["Data", "Horário Inicial", "Horário Final", "Duração (h)", "Atividade"])
+        return pd.DataFrame(columns=["Data", "Atividade", "Horário de Início", "Horário de Fim", "Duração (h)"])
 
 # Função para salvar os dados
 def salvar_dados(dados, arquivo_csv):
 
-    # Ajusta o formato da data para DD-MM-YYYY antes de salvar
+    # Formato da data para DD-MM-YYYY antes de salvar
     dados["Data"] = pd.to_datetime(dados["Data"], dayfirst=True).dt.strftime("%d-%m-%Y")
 
     dados.to_csv(arquivo_csv, index=False)
@@ -90,9 +90,9 @@ st.title("Registro de Horas Totais")
 with st.form("register_form"):
 
     data = st.date_input("Data")
-    horario_inicial = st.time_input("Horário Inicial")
-    horario_final = st.time_input("Horário Final")
     atividade = st.selectbox("Atividade", atividades_recentes)
+    horario_inicial = st.time_input("Horário de Início")
+    horario_final = st.time_input("Horário de Fim")
 
     registrar = st.form_submit_button("Registrar")
     
@@ -107,21 +107,21 @@ with st.form("register_form"):
             horario_inicio = datetime.combine(data, horario_inicial)
             horario_fim = datetime.combine(data, horario_final)
 
-            # Validação: horário inicial deve ser anterior ao horário final
+            # Validação
             if horario_inicio >= horario_fim:
                 st.error("O horário inicial deve ser anterior ao horário final.")
 
             else:
-                # Calcular a duração em horas
+                # Duração em horas
                 duracao = (horario_fim - horario_inicio).total_seconds() / 3600
 
             # Cria nova entrada
             nova_entrada = pd.DataFrame({
                 "Data": [data.strftime("%d-%m-%Y")],
-                "Horário Inicial": [horario_inicio.strftime("%H:%M")],  # Salva apenas o horário
-                "Horário Final": [horario_fim.strftime("%H:%M")],      # Salva apenas o horário
-                "Duração (h)": [round(duracao, 2)],
                 "Atividade": [atividade],
+                "Horário de Início": [horario_inicio.strftime("%H:%M")],  
+                "Horário de Fim": [horario_fim.strftime("%H:%M")],      
+                "Duração (h)": [round(duracao, 2)],
             })
             dados = pd.concat([dados, nova_entrada], ignore_index=True)
             salvar_dados(dados, ARQUIVO_DADOS)
@@ -131,17 +131,20 @@ with st.form("register_form"):
 
             st.success("Registro salvo com sucesso!")
 
-# Exibe tabela com dados registrados
+# Exibe uma tabela com os dados registrados
 st.header("Dados Registrados")
 
 if not dados.empty:
-    # Cria uma cópia formatada para exibição
+
+    # Cria uma cópia formatada para a exibição
     dados_formatados = dados.copy()
     dados_formatados["Data"] = pd.to_datetime(dados_formatados["Data"], errors="coerce").dt.strftime("%d-%m-%Y")
     dados_formatados["Duração (h)"] = dados_formatados["Duração (h)"].round(2)  # Arredonda duração para 2 casas decimais
 
     # Exibe os dados formatados
     st.dataframe(dados_formatados)
+
+    DADOS_VISUALIZACAO = dados_formatados
 
     # Botão para download do CSV
     csv = dados.to_csv(index=False).encode("utf-8")
