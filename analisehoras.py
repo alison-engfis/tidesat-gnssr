@@ -97,8 +97,13 @@ if not dados.empty:
     if menu == "Dataframe Completo":
         st.header("Dados Registrados")
 
+        # Cria uma cópia formatada para a exibição
+        dados_formatados = dados.copy()
+        dados_formatados["Data"] = pd.to_datetime(dados_formatados["Data"], errors="coerce").dt.strftime("%d-%m-%Y")
+        dados_formatados["Duração (h)"] = dados_formatados["Duração (h)"].round(2)  # Arredonda duração para 2 casas decimais
+
         # Exibe a tabela de dados registrados
-        st.dataframe(dados)
+        st.dataframe(dados_formatados)
 
         # Botão para download do arquivo CSV
         csv = dados.to_csv(index=False).encode('utf-8')
