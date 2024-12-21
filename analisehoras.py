@@ -109,7 +109,7 @@ if not dados.empty:
         csv = dados.to_csv(index=False).encode('utf-8')
         
         st.download_button(
-            label="Baixar dados como CSV",
+            label="Download de dados (.csv)",
             data=csv,
             file_name="horas_totais.csv",
             mime="text/csv",
