@@ -7,6 +7,7 @@ urls = [
     "https://tidesat-canoas.streamlit.app",
     "https://tidesat-ipatinga.streamlit.app",
     "https://tidesat-estrela.streamlit.app",
+    "https://tidesat-estrela2.streamlit.app",
     "https://tidesat-fundy.streamlit.app"
 ]
 
