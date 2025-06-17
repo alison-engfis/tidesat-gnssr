@@ -10,7 +10,6 @@ urls = [
     "https://tidesat-estrela2.streamlit.app",
     "https://tidesat-fundy.streamlit.app"
 ]
-
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     context = browser.new_context()
@@ -19,13 +18,13 @@ with sync_playwright() as p:
         try:
             page = context.new_page()
             print(f"🔄 Acessando: {url}")
-            page.goto(url, timeout=60000)
-            page.wait_for_load_state("load")
+            page.goto(url, timeout=90000)
+            page.wait_for_load_state("load")  # aguarda resposta inicial do servidor
 
-            # Verifica se o gráfico está presente (mais confiável que texto)
-            page.wait_for_selector(".plotly-graph-div", timeout=30000)
+            # Espera manual de 45 segundos para renderizações lentas
+            time.sleep(45)
 
-            print(f"✅ Visitado e carregado: {url}")
+            print(f"✅ Visitado e mantido ativo: {url}")
 
         except Exception as e:
             print(f"❌ Erro ao acessar {url}: {e}")
