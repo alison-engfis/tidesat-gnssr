@@ -17,10 +17,12 @@ with sync_playwright() as p:
     for url in urls:
         try:
             page = context.new_page()
-            page.goto(url, timeout=60000)  # até 60s para carregar
+            print(f"🔄 Acessando: {url}")
+            page.goto(url, timeout=60000)
+            page.wait_for_load_state("load")  # espera a página carregar
 
-            # Espera por um texto específico do Streamlit (ajustável se necessário)
-            page.wait_for_selector("text=Nível recente", timeout=10000)
+            # Aumenta o tempo de espera para encontrar o seletor
+            page.wait_for_selector("text=Nível recente", timeout=30000)
 
             print(f"✅ Visitado e carregado: {url}")
 
