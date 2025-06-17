@@ -3,22 +3,20 @@ name: Bot Fantasma Streamlit
 on:
   schedule:
     - cron: '*/30 * * * *'  # roda a cada 30 minutos
-  workflow_dispatch:
+  workflow_dispatch:        # permite executar manualmente também
 
 jobs:
   ping-streamlit:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v3
 
-      - name: Instalar dependências do sistema e Python
+      - name: Instalar Playwright
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libatk-bridge2.0-0 libgtk-3-0 libxss1 libasound2 libnss3 libxcomposite1 libxdamage1 libxrandr2 libgbm1
           pip install playwright
-          playwright install
+          playwright install --with-deps
 
       - name: Executar o bot
-        run: |
-          python pinger.py
+        run: python pinger.py
