@@ -19,10 +19,10 @@ with sync_playwright() as p:
             page = context.new_page()
             print(f"🔄 Acessando: {url}")
             page.goto(url, timeout=60000)
-            page.wait_for_load_state("load")  # espera a página carregar
+            page.wait_for_load_state("load")
 
-            # Aumenta o tempo de espera para encontrar o seletor
-            page.wait_for_selector("text=Nível recente", timeout=30000)
+            # Verifica se o gráfico está presente (mais confiável que texto)
+            page.wait_for_selector(".plotly-graph-div", timeout=30000)
 
             print(f"✅ Visitado e carregado: {url}")
 
