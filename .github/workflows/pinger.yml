@@ -2,7 +2,7 @@ name: Bot Fantasma Streamlit
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # roda a cada 15 minutos
+    - cron: '*/15 * * * *'  # roda a cada 15 minutos
   workflow_dispatch:        # permite executar manualmente também
 
 jobs:
