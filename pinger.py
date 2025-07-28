@@ -10,7 +10,7 @@ urls = [
     "https://tidesat-ipatinga.streamlit.app",
     "https://tidesat-estrela.streamlit.app",
     "https://tidesat-estrela2.streamlit.app",
-    "https://tidesat-fundy.streamlit.app",
+    "https://tidesat-canada.streamlit.app",
     "https://tidesat-metsul.streamlit.app",
     "https://tidesat-estrela-testes.streamlit.app",
     "https://tidesat-beta-estrela.streamlit.app",
