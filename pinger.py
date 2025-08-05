@@ -5,6 +5,7 @@ urls = [
     "https://tidesat.streamlit.app",
     "https://tidesat2.streamlit.app",
     "https://tidesat3.streamlit.app",
+    "https://tidesat-all.streamlit.app",
     "https://tidesat-portosrs.streamlit.app",
     "https://tidesat-canoas.streamlit.app",
     "https://tidesat-ipatinga.streamlit.app",
