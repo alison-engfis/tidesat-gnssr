@@ -30,7 +30,7 @@ with sync_playwright() as p:
             page.wait_for_load_state("load")  # aguarda resposta inicial do servidor
 
             # Espera manual de 45 segundos para renderizações lentas
-            time.sleep(45)
+            time.sleep(60)
 
             print(f"✅ Visitado e mantido ativo: {url}")
 
