@@ -6,16 +6,15 @@ urls = [
     "https://tidesat2.streamlit.app",
     "https://tidesat3.streamlit.app",
     "https://tidesat-all.streamlit.app",
+    "https://tidesat-mapa.streamlit.app",
+    "https://tidesat-estrela.streamlit.app",
+    "https://tidesat-estrela2.streamlit.app",
     "https://tidesat-portosrs.streamlit.app",
     "https://tidesat-canoas.streamlit.app",
     "https://tidesat-ipatinga.streamlit.app",
-    "https://tidesat-estrela.streamlit.app",
-    "https://tidesat-estrela2.streamlit.app",
     "https://tidesat-canada.streamlit.app",
     "https://tidesat-metsul.streamlit.app",
-    "https://tidesat-estrela-testes.streamlit.app",
-    "https://tidesat-beta-estrela.streamlit.app",
-    "https://tidesat-beta-portosrs.streamlit.app"  
+    "https://tidesat-estrela-testes.streamlit.app"  
 ]
 
 with sync_playwright() as p:
