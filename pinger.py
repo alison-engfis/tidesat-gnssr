@@ -66,8 +66,8 @@ def browser_wake(url: str):
             browser.close()
 
 def main():
-    random.shuffle(URLS)  # espalha a ordem a cada execução
-    for url in URLS:
+    random.shuffle(urls)  # espalha a ordem a cada execução
+    for url in urls:
         ok = http_probe(url)
         if not ok:
             print(f"⚠️  Health falhou ou ausente para: {url} — seguindo com navegador.")
