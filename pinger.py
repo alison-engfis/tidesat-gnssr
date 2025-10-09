@@ -11,7 +11,7 @@ urls = [
     "https://tidesat-estrela2.streamlit.app",
     "https://tidesat-portosrs.streamlit.app",
     "https://tidesat-canoas.streamlit.app",
-    "https://tidesat-ipatinga.streamlit.app",
+    "https://tidesat-ipatinga.streamlit.app/",
     "https://tidesat-canada.streamlit.app",
     "https://tidesat-metsul.streamlit.app",
     "https://tidesat-estrela-testes.streamlit.app"  
