@@ -2,7 +2,7 @@ name: Bot Fantasma Streamlit
 
 on:
   schedule:
-    - cron: "*/60 * * * *"
+    - cron: "*/1320 * * * *"
   workflow_dispatch:
 
 concurrency:
