@@ -24,18 +24,27 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 }
 
-# Embaralha para evitar padrão fixo diário
 random.shuffle(URLS)
+
+failed = []
 
 for url in URLS:
     print(f"🔔 Pingando {url}")
-    response = requests.get(url, headers=HEADERS, timeout=30)
-    response.raise_for_status()
-    print(f"✅ OK {url} -> {response.status_code}")
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=30)
+        print(f"↪️  Status {r.status_code} (conta como atividade)")
 
-    # Espaçamento humano entre acessos
+    except requests.RequestException as e:
+        print(f"❌ Falha real ao acessar {url}: {e}")
+        failed.append(url)
+
     sleep_time = random.randint(20, 40)
     print(f"⏳ Aguardando {sleep_time}s")
     time.sleep(sleep_time)
+
+if failed:
+    raise SystemExit(
+        f"🚨 {len(failed)} apps não responderam:\n" + "\n".join(failed)
+    )
 
 print("👻 Bot Fantasma finalizado com sucesso")
