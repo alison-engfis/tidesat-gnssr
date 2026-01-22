@@ -1,10 +1,11 @@
-name: Bot Fantasma Streamlit
+name: Bot Fantasma Streamlit v2
 
 on:
   schedule:
-    - cron: "0 3 * * *"
-    - cron: "0 15 * * *"
-  workflow_dispatch:
+  
+    # A cada 6 horas (4x por dia) para cobrir o limite de 12h
+    - cron: "15 */6 * * *"  # 00:15, 06:15, 12:15, 18:15 UTC
+  workflow_dispatch:  # Permite executar manualmente
 
 concurrency:
   group: ghost-pinger
@@ -13,7 +14,7 @@ concurrency:
 jobs:
   ping-streamlit:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -23,13 +24,42 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: 'pip'
 
-      - name: Install dependencies
+      - name: Install Chrome and ChromeDriver
+        run: |
+          # Atualiza pacotes
+          sudo apt-get update
+          
+          # Instala Chrome
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+          
+          # Verifica versão do Chrome
+          google-chrome --version
+          
+          # Remove o .deb
+          rm google-chrome-stable_current_amd64.deb
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install selenium
 
-      - name: Run pinger
+      - name: Run stealth pinger
         run: |
           set -e
           python pinger.py
+        env:
+          # Variáveis de ambiente opcionais
+          PYTHONUNBUFFERED: "1"
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-logs-${{ github.run_number }}
+          path: |
+            *.log
+            screenshots/*.png
+          retention-days: 7
