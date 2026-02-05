@@ -1,13 +1,31 @@
-### Hello there 👋
+TideSat Monitor - Personal Dashboard
+Este repositório contém a versão pessoal e modular da plataforma TideSat, desenvolvida para o monitoramento e análise de dados hidrológicos. O projeto aplica o rigor da Engenharia Física em uma arquitetura Full Stack Python, com foco em escalabilidade, automação via DevOps e visualização geoespacial avançada.
 
-Check out my current tasks status:
+🚀 Destaques Técnicos
+Arquitetura Modular: Separação clara entre lógica de interface (main.py), configurações de instância (main_config.py) e utilitários de backend (tools.py).
 
-- 🔭 Working at TideSat Global - UFRGS.
-- 🌱 Currently learning more of:
- 
-     - Commands to execute in a Container Docker;
-     - Python for DS and DE;
-     - How to deploy a streamlit app.
-     
+DevOps Ready: Configurado com .devcontainer para ambientes de desenvolvimento padronizados e preparado para deploy via app.yaml.
 
-In the meantime, I´m a Physics and Math teacher (an excelent teacher).
+Multi-language Support: Sistema de internacionalização integrado via language.py.
+
+Monitoramento Ativo: Script pinger.py para verificação de conectividade e integridade de fontes de dados.
+
+🛠️ Stack Tecnológica
+Frontend: Streamlit (Python)
+
+Análise de Dados: Pandas, NumPy, SciPy
+
+Visualização: Plotly, Folium, Pydeck
+
+Infraestrutura: Docker, Bash, YAML (Google Cloud/App Engine)
+
+📂 Estrutura do Projeto
+Bash
+├── .devcontainer/       # Configuração de container para desenvolvimento isolado
+├── dados/               # Armazenamento local de datasets (CSV/Parquet)
+├── main.py              # Ponto de entrada da aplicação Streamlit
+├── main_config.py       # Definições de estações, fuso horário e URLs
+├── tools.py             # Core: Lógica de processamento e plotagem
+├── language.py          # Gestão de dicionários multi-idioma
+├── pinger.py            # Ferramenta de monitoramento de conectividade
+└── requirements.txt     # Dependências do ecossistema Python

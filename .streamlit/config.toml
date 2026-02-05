@@ -1,3 +1,10 @@
+[browser]
+showForkButton = false
+[layout]
+width = "wide"
 [theme]
-base="dark"
-primaryColor="#87CEEB"
+base = "light"
+primaryColor = "#0065cc"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#e1e4e8"
+textColor = "black"
