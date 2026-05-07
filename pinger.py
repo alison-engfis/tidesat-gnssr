@@ -24,7 +24,9 @@ URLS = [
     "https://tidesat-metsul.streamlit.app/",
     "https://tidesat-estrela-testes.streamlit.app/",
     "https://tidesat-muc-temp.streamlit.app/",
-    "https://tidesat-imbituba.streamlit.app/"
+    "https://tidesat-imbituba.streamlit.app/",
+    "https://tidesat-veleiros.streamlit.app/",
+    "https://tidesat-guaiba.streamlit.app/"
 ]
 
 def setup_stealth_driver():
