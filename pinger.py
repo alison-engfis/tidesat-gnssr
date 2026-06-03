@@ -27,6 +27,7 @@ URLS = [
     "https://tidesat-imbituba.streamlit.app/",
     "https://tidesat-veleiros.streamlit.app/",
     "https://tidesat-guaiba.streamlit.app/",
+    "https://tidesat-taquariantas.streamlit.app/",
     "https://gnssir.streamlit.app/"
 ]
 
