@@ -4,7 +4,7 @@ on:
   schedule:
   
     # A cada 6 horas (4x por dia) para cobrir o limite de 12h
-    - cron: "15 */6 * * *"  # 00:15, 06:15, 12:15, 18:15 UTC
+    - cron: "15 */12  * * *"  # 00:15, 06:15, 12:15, 18:15 UTC
   workflow_dispatch:  # Permite executar manualmente
 
 concurrency:
